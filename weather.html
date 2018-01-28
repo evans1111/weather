@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+
+<!-- To Change the background image...
+rename the top div's class to either rainy, cloudy, or sunny. -->
+  <div class="cloudy">
+    <div class="info">
+      <p id="date"></p>
+      <p id="time"></p>
+      <p id="weather">The current weather in Miami is Sunny & <br><span id="temp">81 Degrees</span></p>
+    </div>
+  </div>
+
+  <script>
+    n =  new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+
+    function checkTime(i) {
+      if (i < 10) {
+      i = "0" + i;
+      }
+    return i;
+}
+
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    // add a zero in front of numbers<10
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+    t = setTimeout(function() {
+      startTime()
+    }, 500);
+  }
+  startTime();
+
+  </script>
+
+
+</body>
+</html>
